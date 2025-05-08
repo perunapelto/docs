@@ -1,4 +1,5 @@
 {
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "github-enterprise.uri": "https://www.github.octocat.com"
 }
