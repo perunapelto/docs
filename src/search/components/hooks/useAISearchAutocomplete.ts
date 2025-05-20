@@ -25,7 +25,7 @@ type UseCombinedSearchReturn = {
   clearAutocompleteResults: () => void
 }
 
-const DEBOUNCE_TIME = 250 // In milliseconds
+const DEBOUNCE_TIME = 100 // In milliseconds
 
 // Results are only cached for the current session
 // We cache results so if a user presses backspace, we can show the results immediately without burdening the API
@@ -89,6 +89,17 @@ export function useCombinedSearchResults({
         return
       }
 
+      // If there is an existing search error, don't return any results
+      if (searchError) {
+        setSearchOptions({
+          aiAutocompleteOptions: [],
+          generalSearchResults: [],
+          totalGeneralSearchResults: 0,
+        })
+        setSearchLoading(false)
+        return
+      }
+
       // Create a new AbortController for the new request
       const controller = new AbortController()
       abortControllerRef.current = controller
@@ -120,6 +131,11 @@ export function useCombinedSearchResults({
         }
         console.error(error)
         setSearchError(true)
+        setSearchOptions({
+          aiAutocompleteOptions: [],
+          generalSearchResults: [],
+          totalGeneralSearchResults: 0,
+        })
         setSearchLoading(false)
       }
     },
