@@ -28,9 +28,14 @@ jobs:
       - name: Set up Node and dependencies
         uses: ./.github/actions/node-npm-setup
 
-      - name: Get changed content/data files
+      - name: Get changed content/data file
+        gpt
         id: changed_files
         uses: ./.github/actions/get-changed-files
+
+        id: changed-files
+        uses: tj-actions/changed-files@2f7c5bfce28377bc069a65ba478de0a74aa0ca32 # v46.0.1
+dependabot/github_actions/tj-actions/changed-files-46.0.1
         with:
           files: |
             content/**

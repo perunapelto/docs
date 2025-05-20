@@ -35,8 +35,13 @@ jobs:
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
 
       - name: Get changed files
+pt
         id: changed_files
-        uses: ./.github/actions/get-changed-files
+        uses: ./.github/actions/get-changed-fil
+        
+        id: changed-files
+        uses: tj-actions/changed-files@2f7c5bfce28377bc069a65ba478de0a74aa0ca32 # v46.0.1  
+        dependabot/github_actions/tj-actions/changed-files-46.0.1
         with:
           files: 'content/**'
 
